@@ -42,6 +42,46 @@ To make sure it's all working,
 
 You should see this same information.
 
+## Notes on setup for modern computers, specifically Ubuntun linux 22.04
+- You need to be able to install the correct version of bundler like so:
+
+`gem install bundler -v=1.17.3`
+
+- You need the correct version of the libssl1.0-dev library
+Discussion found here:  https://stackoverflow.com/questions/57946621/error-running-requirements-debian-libs-install-libssl-dev
+
+`
+sudo nano /etc/apt/sources.list
+add deb http://security.ubuntu.com/ubuntu bionic-security main
+sudo apt update && apt-cache policy libssl1.0-dev
+sudo apt-get install libssl1.0-dev
+`
+
+- You need the correct version of ruby
+
+`rvm install 2.2.3`
+
+- Update sqlite3 to 1.3.10 (the default 1.3.6 won't work w/ ruby 2.2.3)
+Change the Gemfile line to appear as
+
+` gem 'sqlite3', '1.3.10' `
+
+- You need to run bundler correctly
+
+` bundle _1.17.3_ install
+
+- After that you should be able to make the db
+
+` rake db:setup `
+
+- And finally run your tests
+
+` rake test `
+
+- If you already had a version of this setup, then you will need to run migrations because I added a column to tenant to count the API requests
+
+` rake db:migrate `
+
 ## Submitting your project
 
-Send us a zip file of the whole project for us to evaluate it.  If you need to add any additional instructions to the README please put them at the very top of that file and mention.  Expect to discuss your design decisions during the interview.
+Create a pull request and put that on the repository you 
