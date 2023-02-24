@@ -1,9 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   name: MyString
   api_key: MyString
+  api_request_count: 0
 
 two:
+  id: 2
   name: MyString
   api_key: MyString
+  api_request_count: 0

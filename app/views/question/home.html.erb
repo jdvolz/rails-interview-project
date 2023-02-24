@@ -1,0 +1,48 @@
+<head>
+<style type="text/css">
+  th, td { padding: 5px; }
+</style>
+</head>
+
+<body>
+<center>
+<h1> Counts for Questions, Answers and Tenants </h1>
+<table rules="all" style="margin: 20px; border: 1px">
+  <thead>
+    <tr style="text-weight:bold;">
+      <th>Question</th>
+      <th>Answers</th>
+      <th>Tenants</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= @questions_count %></td>
+        <td><%= @answers_count %></td>
+        <td><%= @tenants_count %></td>
+      </tr>
+  </tbody>
+</table>
+
+<table rules="all" style="margin: 20px; border: 1px">
+  <thead>
+    <tr style="text-weight:bold;">
+      <th>Tenant ID</th>
+      <th>Tenant Name</th>
+      <th>API Reqeust Counts</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tenants.each do |tenant| %>
+      <tr>
+        <td><%= tenant.id %></td>
+        <td><%= tenant.name %></td>
+        <td><%= tenant.api_request_count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</center>
+</body>
